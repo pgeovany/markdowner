@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export default function Logo() {
-  return <LogoContainer>Markdowner</LogoContainer>;
+  return <LogoContainer>MarkDowner</LogoContainer>;
 }
 
 const LogoContainer = styled.div`
@@ -9,4 +9,11 @@ const LogoContainer = styled.div`
   align-items: center;
   justify-content: center;
   font-family: 'Special Elite', cursive;
+  width: 200px;
+  height: 50px;
+  font-size: 32px;
+  line-height: 36px;
+  letter-spacing: 0.05em;
+  align-items: center;
+  margin: 10px;
 `;

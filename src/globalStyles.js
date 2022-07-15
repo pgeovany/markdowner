@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
 //----------RESET---------------------//
@@ -29,6 +29,7 @@ export default createGlobalStyle`
     }
     body {
         line-height: 1;
+        font-family: 'Mulish', sans-serif;
     }
     ol, ul {
         list-style: none;
