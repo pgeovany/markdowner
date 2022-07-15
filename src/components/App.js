@@ -9,13 +9,15 @@ import SignUp from './Signup/SignUp';
 export default function App() {
   const [userData, setUserData] = useState(null);
 
-  <BrowserRouter>
-    <UserContext.Provider value={{ userData, setUserData }}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="sign-up" element={<SignUp />} />
-      </Routes>
-    </UserContext.Provider>
-  </BrowserRouter>;
+  return (
+    <BrowserRouter>
+      <UserContext.Provider value={{ userData, setUserData }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="sign-up" element={<SignUp />} />
+        </Routes>
+      </UserContext.Provider>
+    </BrowserRouter>
+  );
 }
