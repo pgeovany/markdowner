@@ -6,8 +6,8 @@ const StyledLink = styled(Link)`
   font-size: 15px;
   line-height: 18px;
   text-decoration: none;
-  margin-top: 25px;
-  color: #000;
+  margin: 10px;
+  color: var(--color4);
 `;
 
 export default StyledLink;

@@ -30,7 +30,19 @@ export default createGlobalStyle`
     body {
         line-height: 1;
         font-family: 'Mulish', sans-serif;
-        
+        --color1:#997577;
+        --color2:#ebe5ce;
+        --color3:#6B4F4F;
+        --color4:#483434;
+        --color5:#c3a38a;
+        --color7:#816271;
+        --color8:#4e495f;
+    
+
+        background-color:var(--color1);
+        @media (max-width:767px) {
+            width:100%;
+        }
     }
     ol, ul {
         list-style: none;

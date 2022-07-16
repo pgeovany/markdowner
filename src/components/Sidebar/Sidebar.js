@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import UserContext from '../../contexts/UserContext';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import StyledLink from '../shared/StyledLink';
 
 export default function SideBar() {
   const { userData } = useContext(UserContext);
@@ -37,8 +38,8 @@ export default function SideBar() {
     if (!userData) {
       return (
         <Container>
-          <Link to="/sign-in">Entre</Link>
-          <Link to="/sign-up">Cadastre-se</Link>
+          <StyledLink to="/sign-in">Entre</StyledLink>
+          <StyledLink to="/sign-up">Cadastre-se</StyledLink>
         </Container>
       );
     }
@@ -59,8 +60,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 180px;
-  background-color: black;
+  width: 20%;
+  background-color: var(--color7);
+  color: var(--color5);
   color: white;
   -webkit-animation-name: slideInLeft;
   animation-name: slideInLeft;
@@ -90,5 +92,9 @@ const Container = styled.div`
       -webkit-transform: translateX(0);
       transform: translateX(0);
     }
+  }
+  z-index: 2;
+  @media (max-width: 767px) {
+    width: 40%;
   }
 `;
