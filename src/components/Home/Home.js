@@ -83,8 +83,8 @@ export default function Home() {
         </NoteContainer>
         <br />
         <ButtonsContainer>
-          <Button onClick={downloadNote}>Baixar nota</Button>
-          <Button onClick={saveNote}>Salvar nota</Button>
+          <HomeButton onClick={downloadNote}>Baixar nota</HomeButton>
+          <HomeButton onClick={saveNote}>Salvar nota</HomeButton>
         </ButtonsContainer>
       </StyledBody>
     </>
@@ -150,7 +150,7 @@ const ButtonsContainer = styled.div`
   display: flex;
 `;
 
-const Button = styled.button`
+const HomeButton = styled.button`
   margin-top: 30px;
   width: 100px;
   height: 40px;
