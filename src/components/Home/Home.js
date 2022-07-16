@@ -157,6 +157,8 @@ const HomeButton = styled.button`
   background-color: red;
   margin-right: 20px;
   margin-left: 20px;
+ `;
+ 
 const SidebarVisible = styled.div`
   Button {
     width: fit-content;
