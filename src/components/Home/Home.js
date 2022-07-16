@@ -23,7 +23,7 @@ export default function Home() {
       alert('Você precisa estar conectado para salvar suas notas!');
       return;
     }
-    const URL = 'https://mark-downer-api.herokuapp.com/sign-in';
+    const URL = 'https://mark-downer-api.herokuapp.com/texts';
 
     const config = {
       headers: {
@@ -39,7 +39,7 @@ export default function Home() {
     };
 
     try {
-      await axios.post(`${URL}/texts`, body, config);
+      await axios.post(`${URL}`, body, config);
       alert('nota salva com sucesso');
     } catch (error) {
       console.log(error);
