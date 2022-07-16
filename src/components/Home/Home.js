@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import styled from 'styled-components';
 import MDEditor from '@uiw/react-md-editor';
 import FileSaver from 'file-saver';
+import Button from '../shared/Button';
 import Logo from '../shared/Logo';
 import SideBar from '../Sidebar/Sidebar';
 import UserContext from '../../contexts/UserContext';
@@ -12,6 +13,7 @@ export default function Home() {
   const [noteText, setNoteText] = useState('');
   const [noteTitle] = useState('test');
   const { userData } = useContext(UserContext);
+  const [visible, setVisible] = useState(false);
 
   function downloadNote() {
     const blob = new Blob([noteText], { type: 'text/markdown;charset=utf-8' });
@@ -45,10 +47,19 @@ export default function Home() {
       console.log(error);
     }
   }
-
+  
   return (
     <>
-      <SideBar />
+      <SidebarVisible onClick={() => setVisible(!visible)}>
+        {visible ? (
+          <SideBar />
+        ) : (
+          <Button>
+            <ion-icon className="ion-icon" name="caret-forward"></ion-icon>
+            OPÇÕES
+          </Button>
+        )}
+      </SidebarVisible>
       <StyledBody>
         <Logo />
         <NoteContainer>
@@ -146,4 +157,13 @@ const Button = styled.button`
   background-color: red;
   margin-right: 20px;
   margin-left: 20px;
+const SidebarVisible = styled.div`
+  Button {
+    width: fit-content;
+    top: 0;
+    ion-icon {
+      font-size: 32px;
+      margin: 5px;
+    }
+  }
 `;
