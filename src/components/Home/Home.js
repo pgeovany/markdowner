@@ -1,16 +1,25 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import MDEditor from '@uiw/react-md-editor';
-
+import Button from '../shared/Button';
 import Logo from '../shared/Logo';
 import SideBar from '../Sidebar/Sidebar';
 
 export default function Home() {
   const [noteText, setNoteText] = useState('');
-
+  const [visible, setVisible] = useState(false);
   return (
     <>
-      <SideBar />
+      <SidebarVisible onClick={() => setVisible(!visible)}>
+        {visible ? (
+          <SideBar />
+        ) : (
+          <Button>
+            <ion-icon className="ion-icon" name="caret-forward"></ion-icon>
+            OPÇÕES
+          </Button>
+        )}
+      </SidebarVisible>
       <StyledBody>
         <Logo />
         <NoteContainer>
@@ -90,4 +99,15 @@ const Editor = styled.div`
 const Title = styled.h1`
   align-self: center;
   font-size: 20px;
+`;
+
+const SidebarVisible = styled.div`
+  Button {
+    width: fit-content;
+    top: 0;
+    ion-icon {
+      font-size: 32px;
+      margin: 5px;
+    }
+  }
 `;

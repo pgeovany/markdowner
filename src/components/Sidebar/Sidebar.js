@@ -31,4 +31,32 @@ const Container = styled.div`
   width: 180px;
   background-color: black;
   color: white;
+    -webkit-animation-name: slideInLeft;
+    animation-name: slideInLeft;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  @-webkit-keyframes slideInLeft {
+    0% {
+      -webkit-transform: translateX(-100%);
+      transform: translateX(-100%);
+      visibility: visible;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+  }
+  @keyframes slideInLeft {
+    0% {
+      -webkit-transform: translateX(-100%);
+      transform: translateX(-100%);
+      visibility: visible;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
 `;
