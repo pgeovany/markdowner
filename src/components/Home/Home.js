@@ -54,10 +54,10 @@ export default function Home() {
         {visible ? (
           <SideBar />
         ) : (
-          <Button>
-            <ion-icon className="ion-icon" name="caret-forward"></ion-icon>
-            OPÇÕES
-          </Button>
+          <ion-icon name="menu-sharp"></ion-icon>
+          // <Button>
+          //   <ion-icon name="menu-sharp"></ion-icon>
+          // </Button>
         )}
       </SidebarVisible>
       <StyledBody>
@@ -76,15 +76,18 @@ export default function Home() {
             <Preview>
               <MDEditor.Markdown
                 source={noteText}
-                style={{ whiteSpace: 'pre-wrap', background: 'lightblue' }}
+                style={{
+                  whiteSpace: 'pre-wrap',
+                  background: 'var(--color2)',
+                }}
               />
             </Preview>
           </Editor>
         </NoteContainer>
         <br />
         <ButtonsContainer>
-          <HomeButton onClick={downloadNote}>Baixar nota</HomeButton>
-          <HomeButton onClick={saveNote}>Salvar nota</HomeButton>
+          <Button onClick={downloadNote}>Baixar nota</Button>
+          <Button onClick={saveNote}>Salvar nota</Button>
         </ButtonsContainer>
       </StyledBody>
     </>
@@ -97,7 +100,13 @@ const StyledBody = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-left: 60px;
+  height: 100%;
+  margin-top: 100px;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    margin: 0;
+  }
 `;
 
 const NoteContainer = styled.div`
@@ -105,17 +114,31 @@ const NoteContainer = styled.div`
   justify-content: space-around;
   margin-top: 20px;
   width: 80%;
+  color: var(--color3);
+
+  @media (max-width: 767px) {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    margin-top: 10px;
+  }
 `;
 
 const TextArea = styled.textarea`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   border: none;
-  background-color: lightblue;
+  background-color: var(--color2);
   resize: none;
 
   &&:focus {
     outline: none;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -129,16 +152,33 @@ const Preview = styled.div`
     scrollbar-width: none;
     display: none;
   }
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 const Editor = styled.div`
   width: 46%;
-  height: 400px;
+  height: 550px;
   padding: 10px;
-  background-color: lightblue;
+  background-color: var(--color2);
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0 10px 6px -6px #483434;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 400px;
+    :first-child {
+      margin-top: 50px;
+    }
+    :last-child {
+      margin-bottom: 50px;
+    }
+  }
 `;
 
 const Title = styled.h1`
@@ -148,24 +188,69 @@ const Title = styled.h1`
 
 const ButtonsContainer = styled.div`
   display: flex;
+  margin: 0;
+  Button {
+    width: 200px;
+    margin: 5px;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    Button {
+      width: 150px;
+      margin: 5px;
+    }
+  }
 `;
 
-const HomeButton = styled.button`
-  margin-top: 30px;
-  width: 100px;
-  height: 40px;
-  background-color: red;
-  margin-right: 20px;
-  margin-left: 20px;
-`;
+// const HomeButton = styled.button`
+//   margin-top: 30px;
+//   width: 100px;
+//   height: 40px;
+//   background-color: red;
+//   margin-right: 20px;
+//   margin-left: 20px;
+//   @media (max-width: 767px) {
+//     width: 100px;
+//     margin: 5px;
+//   }
+// `;
 
 const SidebarVisible = styled.div`
-  Button {
+  ion-icon {
+    font-size: 40px;
+    margin: 5px;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    cursor: pointer;
+    color: var(--color4);
+  }
+
+  @media (max-width: 767px) {
+    ion-icon {
+      font-size: 32px;
+    }
+  }
+  /* Button {
     width: fit-content;
     top: 0;
     ion-icon {
       font-size: 32px;
       margin: 5px;
     }
+    position: fixed;
+
+    z-index: 1;
   }
+  @media (max-width: 767px) {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+  } */
 `;

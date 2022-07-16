@@ -5,15 +5,29 @@ export default function Logo() {
 }
 
 const LogoContainer = styled.div`
+  position: absolute;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Special Elite', cursive;
-  width: 200px;
+  width: 300px;
   height: 50px;
-  font-size: 32px;
-  line-height: 36px;
+  font-size: 34px;
+  line-height: 32px;
   letter-spacing: 0.05em;
   align-items: center;
-  margin: 10px;
+
+  padding-top: 15px;
+  color: var(--color4);
+  background-color: var(--color6);
+  box-shadow: 0 5px 3px -3px #483434;
+  @media (max-width: 767px) {
+    top: 0;
+    width: 100%;
+    background-color: var(--color6);
+    margin: 0;
+    letter-spacing: 0.004em;
+    box-shadow: none;
+  }
 `;
