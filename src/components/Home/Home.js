@@ -171,7 +171,7 @@ const Editor = styled.div`
   @media (max-width: 767px) {
     width: 100%;
     margin-bottom: 10px;
-    height: 400px;
+    height: 380px;
     :first-child {
       margin-top: 50px;
     }

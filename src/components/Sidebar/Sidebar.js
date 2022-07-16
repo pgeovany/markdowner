@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import UserContext from '../../contexts/UserContext';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import StyledLink from '../shared/StyledLink';
