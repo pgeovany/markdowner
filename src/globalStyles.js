@@ -53,4 +53,12 @@ export default createGlobalStyle`
         box-sizing: border-box;
     }
 //-------RESET-----------------------//
+    body {
+        -ms-overflow-style: none;
+        scrollbar-width: none;  
+    }
+
+    body::-webkit-scrollbar {
+    display: none;
+    }
 `;
