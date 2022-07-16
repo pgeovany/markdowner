@@ -1,10 +1,37 @@
 import styled from 'styled-components';
 import UserContext from '../../contexts/UserContext';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default function SideBar() {
   const { userData } = useContext(UserContext);
+  const [notes, setNotes] = useState([]);
+
+  useEffect(() => {
+    if (!userData) {
+      return;
+    }
+
+    async function fetchData() {
+      const URL = 'https://mark-downer-api.herokuapp.com/texts';
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userData.token}`,
+        },
+      };
+
+      try {
+        const response = await axios.get(`${URL}`, config);
+        setNotes(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+    fetchData();
+  }, []); //eslint-disable-line
 
   function genSideBar() {
     if (!userData) {
@@ -15,7 +42,11 @@ export default function SideBar() {
         </Container>
       );
     }
-    return <></>;
+    return (
+      <Container>
+        {notes.length > 0 ? notes.map((note) => <p>{note.title}</p>) : null}
+      </Container>
+    );
   }
 
   return <>{genSideBar()}</>;
@@ -31,13 +62,13 @@ const Container = styled.div`
   width: 180px;
   background-color: black;
   color: white;
-    -webkit-animation-name: slideInLeft;
-    animation-name: slideInLeft;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-  }
+  -webkit-animation-name: slideInLeft;
+  animation-name: slideInLeft;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+
   @-webkit-keyframes slideInLeft {
     0% {
       -webkit-transform: translateX(-100%);
@@ -59,4 +90,5 @@ const Container = styled.div`
       -webkit-transform: translateX(0);
       transform: translateX(0);
     }
+  }
 `;
