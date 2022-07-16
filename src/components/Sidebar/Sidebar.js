@@ -62,13 +62,13 @@ const Container = styled.div`
   width: 180px;
   background-color: black;
   color: white;
-    -webkit-animation-name: slideInLeft;
-    animation-name: slideInLeft;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-  }
+  -webkit-animation-name: slideInLeft;
+  animation-name: slideInLeft;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+
   @-webkit-keyframes slideInLeft {
     0% {
       -webkit-transform: translateX(-100%);
@@ -90,4 +90,5 @@ const Container = styled.div`
       -webkit-transform: translateX(0);
       transform: translateX(0);
     }
+  }
 `;

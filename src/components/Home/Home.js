@@ -47,7 +47,7 @@ export default function Home() {
       console.log(error);
     }
   }
-  
+
   return (
     <>
       <SidebarVisible onClick={() => setVisible(!visible)}>
@@ -157,8 +157,8 @@ const HomeButton = styled.button`
   background-color: red;
   margin-right: 20px;
   margin-left: 20px;
- `;
- 
+`;
+
 const SidebarVisible = styled.div`
   Button {
     width: fit-content;
