@@ -8,12 +8,14 @@ import Logo from '../shared/Logo';
 import SideBar from '../Sidebar/Sidebar';
 import UserContext from '../../contexts/UserContext';
 import axios from 'axios';
+import OpenNoteContext from '../../contexts/OpenNoteContext';
 
 export default function Home() {
   const [noteText, setNoteText] = useState('');
-  const [noteTitle] = useState('test');
+  const { noteTitle, setNoteTitle } = useContext(OpenNoteContext);
   const { userData } = useContext(UserContext);
   const [visible, setVisible] = useState(false);
+  const { openNote, setOpenNote } = useContext(OpenNoteContext);
 
   function downloadNote() {
     const blob = new Blob([noteText], { type: 'text/markdown;charset=utf-8' });
@@ -48,17 +50,22 @@ export default function Home() {
     }
   }
 
+  function insertTitle() {
+    if (noteTitle) {
+      return <></>;
+    } else {
+      return setNoteTitle(prompt('Insira um titulo para sua nota!'));
+    }
+  }
+  function newNote() {
+    setNoteTitle('');
+    setOpenNote(null);
+  }
+
   return (
     <>
       <SidebarVisible onClick={() => setVisible(!visible)}>
-        {visible ? (
-          <SideBar />
-        ) : (
-          <ion-icon name="menu-sharp"></ion-icon>
-          // <Button>
-          //   <ion-icon name="menu-sharp"></ion-icon>
-          // </Button>
-        )}
+        {visible ? <SideBar /> : <ion-icon name="menu-sharp"></ion-icon>}
       </SidebarVisible>
       <StyledBody>
         <Logo />
@@ -67,15 +74,16 @@ export default function Home() {
             <Title>Markdown</Title>
             <TextArea
               autoFocus
-              value={noteText}
+              value={openNote ? openNote : noteText}
               onChange={(e) => setNoteText(e.target.value)}
+              onClick={() => insertTitle()}
             ></TextArea>
           </Editor>
           <Editor>
             <Title>Preview</Title>
             <Preview>
               <MDEditor.Markdown
-                source={noteText}
+                source={openNote ? openNote : noteText}
                 style={{
                   whiteSpace: 'pre-wrap',
                   background: 'var(--color2)',
@@ -88,6 +96,7 @@ export default function Home() {
         <ButtonsContainer>
           <Button onClick={downloadNote}>Baixar nota</Button>
           <Button onClick={saveNote}>Salvar nota</Button>
+          <Button onClick={newNote}>Nova Nota</Button>
         </ButtonsContainer>
       </StyledBody>
     </>
