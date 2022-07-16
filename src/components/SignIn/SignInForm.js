@@ -27,6 +27,7 @@ export default function SignUpForm() {
       setUserData({
         name,
         token,
+        email,
       });
       navigate('/');
     } catch (error) {
